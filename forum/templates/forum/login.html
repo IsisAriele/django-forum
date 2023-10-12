@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <span style="color: red">{{ message }}</span>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <span style="color: red">{{ field.errors }}</span>
+            {{ field.label_tag }}
+            <br>
+            {{ field }}
+            <br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Submit" style="width: 176px">
+    </form>
+    <br>
+    Don't have an account yet? <a href="{% url 'register' %}">Register</a>
+</body>
+</html>

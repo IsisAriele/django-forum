@@ -7,3 +7,9 @@ class UserRegistrationForm(forms.Form):
     username = forms.CharField(label="Username", max_length=255)
     email = forms.EmailField(label="E-mail", max_length=255)
     password = forms.CharField(label="Password", widget=forms.PasswordInput(), max_length=255)
+
+
+class UserLoginForm(forms.Form):
+    username = forms.CharField(label="Username", max_length=255)
+    password = forms.CharField(label="Password", widget=forms.PasswordInput(), max_length=255)
+    
