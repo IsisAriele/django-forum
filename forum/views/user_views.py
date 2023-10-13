@@ -41,7 +41,7 @@ class UserLoginView(View):
             user = authenticate(username=form.data["username"], password=form.data["password"])
             if user is not None:
                 login(request, user)
-                return render(request, "forum/index.html", {})
+                return redirect("index")
             else:
                 return render(request, "forum/login.html", {"form": form, "message": "Username or password is invalid"})
 

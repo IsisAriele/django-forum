@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width={device-width}, initial-scale=1.0">
-    <title>Document</title>
+    <title>Topics</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <p>isis</p>
+    <h1>Welcome to the django forum!</h1>
+    <h3>Comment, discuss or create your own topics</h3>
+    <button><a href="{% url 'index' %}?my_topics=true">My topics</a></button>
+    <button><a href="{% url 'index' %}">All topics</a></button>
+    <ul>
+        {% for topic in topics %}
+            <li style="padding: 5px;">{{ topic.title }} - Created by: {{ topic.user.username }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
