@@ -1,6 +1,6 @@
 from django.views import View
 from django.shortcuts import render, redirect
-from forum.models import Topic
+from forum.models import Topic, Comment
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from forum.forms.topic_form import TopicRegistrationForm
@@ -41,3 +41,9 @@ class TopicRegistrationView(View):
         
         # Deu ruim
         return render(request, "forum/topic.html", {})
+    
+class TopicVisualizationView(View):
+    def get(self, request, topic_id):
+        topic = Topic.objects.get(id=topic_id)
+        comments = Comment.objects.filter(topic=topic)
+        return render(request, "forum/topic_visualization.html", {"topic": topic, "comments": comments})

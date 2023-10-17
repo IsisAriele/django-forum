@@ -19,7 +19,7 @@
     <button><a href="{% url 'index' %}">All topics</a></button>
     <ul>
         {% for topic in topics %}
-            <li style="padding: 5px;">{{ topic.title }} - Created by: {{ topic.user.username }}</li>
+            <a href="{% url 'topic-visualization' topic_id=topic.id %}"><li style="padding: 5px;">{{ topic.title }} - Created by: {{ topic.user.username }}</li></a>
         {% endfor %}
     </ul>
 </body>

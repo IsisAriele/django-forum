@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{ topic.title }}</h1>
+    <p>{{ topic.text }}</p>
+
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        <p><i>{{comment.text}}</i> - <b>{{comment.user.username}}</b></p>
+        {% for reply in comment.reply_set.all %}
+            <p>-----{{reply.text}} - {{reply.user.username}}</p>
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>
